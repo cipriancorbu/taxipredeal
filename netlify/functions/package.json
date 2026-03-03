@@ -1,8 +1,0 @@
-{
-  "name": "taxipredeal",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@google/genai": "^1.0.0"
-  }
-}
