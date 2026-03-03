@@ -30,7 +30,6 @@
   const statusEl = document.getElementById("status");
   const imgEl = document.getElementById("img");
 
-  // 1) La încărcare, încearcă să refaci ultima imagine din cache (nu consumă API)
   (function restoreFromCache() {
     try {
       const lastPrompt = localStorage.getItem("gemini_last_prompt");
@@ -41,7 +40,6 @@
         statusEl.textContent = "Încărcat din cache ✅";
       }
     } catch (e) {
-      // dacă localStorage e blocat / plin, ignorăm
     }
   })();
 
@@ -61,7 +59,6 @@
       return;
     }
 
-    // 2) Dacă promptul e același ca ultimul și avem imagine, nu chemăm API
     try {
       const lastPrompt = localStorage.getItem("gemini_last_prompt");
       const lastImage = localStorage.getItem("gemini_last_image_dataurl");
@@ -90,12 +87,10 @@
       const dataUrl = await blobToDataURL(blob);
       imgEl.src = dataUrl;
 
-      // 3) Salvăm în cache (refresh-ul nu mai consumă API)
       try {
         localStorage.setItem("gemini_last_prompt", prompt);
         localStorage.setItem("gemini_last_image_dataurl", dataUrl);
       } catch (e) {
-        // dacă e prea mare pentru localStorage, ignorăm
       }
 
       statusEl.textContent = "Gata ✅";
