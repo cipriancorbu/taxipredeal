@@ -1,0 +1,37 @@
+RewriteEngine on
+#Alternate default index pages
+DirectoryIndex first.html index.htm index.html index.php
+
+# --- REDIRECTS PENTRU PAGINI 
+Redirect 301 /contact.html /taxi-predeal-contact.html
+Redirect 301 /utile.html /taxi-predeal-utile.html
+Redirect 301 /gdpr.html /taxi-predeal-gdpr.html
+Redirect 301 /index2.html /tarife-taxi-predeal.html
+Redirect 301 /index1.html /contact.html
+Redirect 301 /index5.html /utile.html
+Redirect 301 /index8.html /gdpr.html
+# --- END REDIRECTS ---
+
+RewriteCond %{HTTP_REFERER} !^http://taxipredeal.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://taxipredeal.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.taxipredeal.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.taxipredeal.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://taxipredeal.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://taxipredeal.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.taxipredeal.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.taxipredeal.com$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 178.138.32.128
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php56” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php56 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
